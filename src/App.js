@@ -1,8 +1,11 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
 import { useEffect, useState } from 'react';
 import './index.css';
 import NewTodoForm from './components/NewTodoForm';
 import TodoList from './components/TodoList';
 import CompletedTodo from './components/CompletedTodo';
+import { useTranslation } from 'react-i18next';
 function App() {
   
   const [todos, setTodos] = useState(() => {
@@ -42,14 +45,23 @@ function App() {
       return currentTodos.filter(todo => todo.id!== id)
     })
   }
+
+  const {t} = useTranslation()
+  const name = "Ismeet"
   return (
-    <>
-  <NewTodoForm onSubmit={addTodo}/>
-  <h1 className="header">Todo List</h1>
-  <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo}/>
-  <h1 className="header">Completed tasks</h1>
-  <CompletedTodo todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
-</>
+    <div>
+      <h1>{t("greeting", { name: name })}</h1>
+      <NewTodoForm onSubmit={addTodo} />
+      <h1>Total tasks: {todos.length}</h1>
+      <h1 className="header">Todo List</h1>
+      <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
+      <h1 className="header">Completed tasks</h1>
+      <CompletedTodo
+        todos={todos}
+        toggleTodo={toggleTodo}
+        deleteTodo={deleteTodo}
+      />
+    </div>
   );
 }
 
