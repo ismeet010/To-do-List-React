@@ -7,7 +7,6 @@ export default function TodoList({todos, toggleTodo, deleteTodo}){
   {todos.map(todo => {
     if(!todo.completed){
     return (
-
     <TodoItem id={todo.id} completed={todo.completed} title={todo.title} key={todo.id} toggleTodo={toggleTodo} deleteTodo={deleteTodo}/>
     )
   }

@@ -5,7 +5,6 @@ import './index.css';
 import NewTodoForm from './components/NewTodoForm';
 import TodoList from './components/TodoList';
 import CompletedTodo from './components/CompletedTodo';
-import { useTranslation } from 'react-i18next';
 function App() {
   
   const [todos, setTodos] = useState(() => {
@@ -46,11 +45,10 @@ function App() {
     })
   }
 
-  const {t} = useTranslation()
   const name = "Ismeet"
   return (
     <div>
-      <h1>{t("greeting", { name: name })}</h1>
+      <h1>{("greeting", { name: name })}</h1>
       <NewTodoForm onSubmit={addTodo} />
       <h1>Total tasks: {todos.length}</h1>
       <h1 className="header">Todo List</h1>
