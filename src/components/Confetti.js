@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef } from "react";
 
 import ReactCanvasConfetti from "react-canvas-confetti";
 
-export default function Confetti() {
+export default function Confetti({ todos }) {
   const refAnimationInstance = useRef(null);
 
   const getInstance = useCallback((instance) => {
@@ -17,10 +17,13 @@ export default function Confetti() {
         particleCount: Math.floor(200 * particleRatio),
       });
   }, []);
-
+  // useEffect(() => {
+  //   console.log("From confeeti");
+  // }, []);
   useEffect(() => fire(), []);
 
   const fire = useCallback(() => {
+    console.log("I was called");
     makeShot(0.25, {
       spread: 26,
       startVelocity: 55,
