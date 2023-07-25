@@ -72,7 +72,7 @@ function App() {
         ))}
       </select> */}
       {/* <h1>{t("greeting", { name: name })}</h1> */}
-      <Auth />
+      {/* <Auth /> */}
       <NewTodoForm onSubmit={addTodo} />
       <h1>Total tasks: {todos.length}</h1>
       <h1 className="header">Todo List</h1>
